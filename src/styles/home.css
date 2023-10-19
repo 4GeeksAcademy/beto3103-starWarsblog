@@ -1,0 +1,10 @@
+.my-card{
+    border: 1px solid black;
+    /* display: flex */
+    min-width: 300px;
+}
+
+.my-carousel{
+    display: flex;
+    overflow-x: scroll;
+}

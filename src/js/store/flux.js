@@ -13,6 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+
 			character: [
 
 			],
@@ -53,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
+
 			getCharacters: async () => {
 				let store = getStore()
 				try {
@@ -102,6 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					favorites: [...store.favorites, favToSave]
 				})
 			},
+
 			getCharacter: (id) => {
 				fetch(`https://www.swapi.tech/api/people/${id}`)
 					// fetch(`${store.urlBase}/people/${id}`)
@@ -112,8 +115,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 						})
 						// console.log(data.result)
 					})
+			},
 
+			getPlanet: (id) => {
+				fetch(`https://www.swapi.tech/api/planets/${id}`)
+					// fetch(`${store.urlBase}/people/${id}`)
+					.then(res => res.json())
+					.then(data => {
+						setStore({
+							onePlanet: data.result
+						})
+						// console.log(data.result)
+					})
 			}
+
 		}
 	};
 };

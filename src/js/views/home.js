@@ -57,7 +57,7 @@ export const Home = () => {
 									Terrain: {item.properties.terrain}
 								</p>
 								<div className="d-flex justify-content-evenly">
-									<Link to="/DetailsCharacters">
+									<Link to={`/detailPlanets/${item?.uid}`}>
 										<button className="btn btn-primary">Learn more</button>
 									</Link>
 									<span className="">

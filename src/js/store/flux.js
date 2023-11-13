@@ -27,6 +27,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [
 
 			],
+
+			onePlanet: {},
+
 			urlBase: "https://www.swapi.tech/api",
 
 		},
@@ -98,10 +101,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+
 			addFavorite: (favToSave) => {
 				let store = getStore()
+				let isInFav = store.favorites.some((item) => item._id == favToSave._id)
+				if (isInFav === false) {
+					setStore({
+						favorites: [...store.favorites, favToSave]
+					})
+				}
+			},
+
+			eliminateFavorite: (favToEliminate) => {
+				let store = getStore()
+				let newFavorites = store.favorites.filter((item) => item._id != favToEliminate)
 				setStore({
-					favorites: [...store.favorites, favToSave]
+					favorites: newFavorites
 				})
 			},
 
@@ -125,7 +140,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({
 							onePlanet: data.result
 						})
-						// console.log(data.result)
+						console.log(data.result)
 					})
 			}
 

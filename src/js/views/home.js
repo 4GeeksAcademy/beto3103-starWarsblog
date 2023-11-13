@@ -57,11 +57,11 @@ export const Home = () => {
 									Terrain: {item.properties.terrain}
 								</p>
 								<div className="d-flex justify-content-evenly">
-									<Link to={`/detailPlanets/${item?.uid}`}>
+									<Link to={`/detailPlanet/${item?.uid}`}>
 										<button className="btn btn-primary">Learn more</button>
 									</Link>
 									<span className="">
-										<i className="fa-solid fa-heart fa-2xl" onClick={(item) => actions.addFavorite}></i>
+										<i className="fa-solid fa-heart fa-2xl" onClick={() => actions.addFavorite(item)}></i>
 									</span>
 								</div>
 							</div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 export const Navbar = () => {
-	const { store } = useContext(Context)
+	const { store, actions } = useContext(Context)
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -17,9 +17,6 @@ export const Navbar = () => {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul className="navbar-nav">
-							<li className="nav-item">
-								<a className="nav-link" href="#">Features</a>
-							</li>
 							<li className="nav-item dropdown">
 								<a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									Favorites {store.favorites.length}
@@ -31,10 +28,13 @@ export const Navbar = () => {
 									{
 										store.favorites.map((item) => {
 											return (
-												<li key={item.id}>
+												<li key={item.id} className="d-flex justify-content-between">
 													<Link className="dropdown-item">
 														{item.properties.name}
 													</Link>
+													<button className="btn" onClick={() => actions.eliminateFavorite(item._id)}>
+														<i className="fa-solid fa-trash"></i>
+													</button>
 												</li>
 											)
 										})
